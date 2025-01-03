@@ -3,6 +3,6 @@ REST API's
 DONE - 1. GET   - /tasks         - Return the list of all the tasks in HTML
 DONE - 1. GET   - api/tasks      - Return the list of all the tasks
 DONE - 2. GET   - api/tasks/id   - Return the task with matching id
-3. POST  - api/tasks      - Create a new task with the details provided in the body
+DONE - 3. POST  - api/tasks      - Create a new task with the details provided in the body
 4. PATCH - api/tasks/id   - Update the task with matching id
 5. DELETE - api/tasks/id  - Delete the task with matching id
