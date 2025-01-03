@@ -7,9 +7,9 @@ const PORT = 6069;
 
 app.use(express.urlencoded({ extended: false }));
 
-app.use((req, res, next)=>{
+app.use((req, res, next) => {
     const log = `Request recieved ${req.method}-${req.path}-${Date.now().toLocaleString()}\n`;
-    fs.appendFile('./log.text', log, (err)=>{
+    fs.appendFile('./log.text', log, (err) => {
         console.log("Something went wrong");
     });
     next();
@@ -31,13 +31,12 @@ app.post('/api/tasks', (req, res) => {
     fs.writeFile('./mock_tasks.json', JSON.stringify(tasks), (err) => {
         console.log(`Error adding new task to the file ${err}`);
     });
-    return res.send({
-        "msg": `Task ${newTaskId} added successfully`,
-    });
+    return res.status(201).send({ "msg": `Task ${newTaskId} added successfully`, });
+
 });
 
 // Edit an existing task
-app.patch('/api/tasks/:id', (req, res)=>{
+app.patch('/api/tasks/:id', (req, res) => {
     const newTask = req.body;
     // Edit the existing json at that id
     // Update the mockData file with new json value
