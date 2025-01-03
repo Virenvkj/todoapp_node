@@ -7,6 +7,14 @@ const PORT = 6069;
 
 app.use(express.urlencoded({ extended: false }));
 
+app.use((req, res, next)=>{
+    const log = `Request recieved ${req.method}-${req.path}-${Date.now().toLocaleString()}\n`;
+    fs.appendFile('./log.text', log, (err)=>{
+        console.log("Something went wrong");
+    });
+    next();
+});
+
 // Routes
 app.get('/tasks', (req, res) => {
     const tasksHtml = `
